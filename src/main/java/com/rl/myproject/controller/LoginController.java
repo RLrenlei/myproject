@@ -26,6 +26,7 @@ public class LoginController {
                                         @RequestParam("password") String password) {
         ResponseResult<User> resp = new ResponseResult<>();
         User user = permissionService.getUser(username,password);
+
         resp.setState(HttpStatus.OK.value());
         resp.setMessage("登录成功");
         resp.setData(user);
