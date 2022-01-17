@@ -8,7 +8,7 @@
 	<meta name="description" content="Neon Admin Panel">
 	<meta name="author" content="">
 	
-	<title>Neon | Dashboard</title>
+	<title>Neon | Editors</title>
 	
 
 	<link rel="stylesheet" href="static/css/jquery-ui-1.10.3.custom.min.css">
@@ -32,7 +32,7 @@
 	
 	
 </head>
-<body class="page-body  page-fade" data-url="http://sc.chinaz.com">
+<body class="page-body" data-url="http://neon.dev">
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->	
 	
@@ -43,7 +43,7 @@
 			
 			<!-- logo -->
 			<div class="logo">
-				<a href="">
+				<a href="index.html">
 					<img src="static/picture/logo@2x.png" width="120" alt="">
 				</a>
 			</div>
@@ -84,14 +84,14 @@
 					</button>
 				</form>
 			</li>
-			<li class="active opened active">
-				<a href="">
+			<li>
+				<a href="index.html">
 					<i class="entypo-gauge"></i>
 					<span>Dashboard</span>
 				</a>
 				<ul>
-					<li class="active">
-						<a href="">
+					<li>
+						<a href="index.html">
 							<span>Dashboard 1</span>
 						</a>
 					</li>
@@ -252,7 +252,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="" target="_blank">
+				<a href="index.html" target="_blank">
 					<i class="entypo-monitor"></i>
 					<span>Frontend</span>
 				</a>
@@ -362,7 +362,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="opened active">
 				<a href="forms-main.html">
 					<i class="entypo-doc-text"></i>
 					<span>Forms</span>
@@ -403,8 +403,8 @@
 							<span>File Upload</span>
 						</a>
 					</li>
-					<li>
-						<a href="forms-wysiwyg.html">
+					<li class="active">
+						<a href="">
 							<span>Editors</span>
 						</a>
 					</li>
@@ -1148,579 +1148,88 @@
 </div>
 
 <hr>
-
-<script type="text/javascript">
-jQuery(document).ready(function($) 
-{
-	// Sample Toastr Notification
-	setTimeout(function()
-	{			
-		var opts = {
-			"closeButton": true,
-			"debug": false,
-			"positionClass": rtl() || public_vars.$pageContainer.hasClass('right-sidebar') ? "toast-top-left" : "toast-top-right",
-			"toastClass": "black",
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "5000",
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		};
-
-		toastr.success("You have been awarded with 1 year free subscription. Enjoy it!", "Account Subcription Updated", opts);
-	}, 3000);
-	
-	
-	// Sparkline Charts
-	$('.inlinebar').sparkline('html', {type: 'bar', barColor: '#ff6264'} );
-	$('.inlinebar-2').sparkline('html', {type: 'bar', barColor: '#445982'} );
-	$('.inlinebar-3').sparkline('html', {type: 'bar', barColor: '#00b19d'} );
-	$('.bar').sparkline([ [1,4], [2, 3], [3, 2], [4, 1] ], { type: 'bar' });
-	$('.pie').sparkline('html', {type: 'pie',borderWidth: 0, sliceColors: ['#3d4554', '#ee4749','#00b19d']});
-	$('.linechart').sparkline();
-	$('.pageviews').sparkline('html', {type: 'bar', height: '30px', barColor: '#ff6264'} );
-	$('.uniquevisitors').sparkline('html', {type: 'bar', height: '30px', barColor: '#00b19d'} );
-	
-	
-	$(".monthly-sales").sparkline([1,2,3,5,6,7,2,3,3,4,3,5,7,2,4,3,5,4,5,6,3,2], {
-		type: 'bar',
-		barColor: '#485671',
-		height: '80px',
-		barWidth: 10,
-		barSpacing: 2
-	});	
-	
-	
-	// JVector Maps
-	var map = $("#map");
-	
-	map.vectorMap({
-		map: 'europe_merc_en',
-		zoomMin: '3',
-		backgroundColor: '#383f47',
-		focusOn: { x: 0.5, y: 0.8, scale: 3 }
-	});		
-	
+			<ol class="breadcrumb bc-3">
+						<li>
+				<a href="index.html"><i class="entypo-home"></i>Home</a>
+			</li>
+					<li>
 			
-	
-	// Line Charts
-	var line_chart_demo = $("#line-chart-demo");
-	
-	var line_chart = Morris.Line({
-		element: 'line-chart-demo',
-		data: [
-			{ y: '2006', a: 100, b: 90 },
-			{ y: '2007', a: 75,  b: 65 },
-			{ y: '2008', a: 50,  b: 40 },
-			{ y: '2009', a: 75,  b: 65 },
-			{ y: '2010', a: 50,  b: 40 },
-			{ y: '2011', a: 75,  b: 65 },
-			{ y: '2012', a: 100, b: 90 }
-		],
-		xkey: 'y',
-		ykeys: ['a', 'b'],
-		labels: ['October 2013', 'November 2013'],
-		redraw: true
-	});
-	
-	line_chart_demo.parent().attr('style', '');
-	
-	
-	// Donut Chart
-	var donut_chart_demo = $("#donut-chart-demo");
-	
-	donut_chart_demo.parent().show();
-	
-	var donut_chart = Morris.Donut({
-		element: 'donut-chart-demo',
-		data: [
-			{label: "Download Sales", value: getRandomInt(10,50)},
-			{label: "In-Store Sales", value: getRandomInt(10,50)},
-			{label: "Mail-Order Sales", value: getRandomInt(10,50)}
-		],
-		colors: ['#707f9b', '#455064', '#242d3c']
-	});
-	
-	donut_chart_demo.parent().attr('style', '');
-	
-	
-	// Area Chart
-	var area_chart_demo = $("#area-chart-demo");
-	
-	area_chart_demo.parent().show();
-	
-	var area_chart = Morris.Area({
-		element: 'area-chart-demo',
-		data: [
-			{ y: '2006', a: 100, b: 90 },
-			{ y: '2007', a: 75,  b: 65 },
-			{ y: '2008', a: 50,  b: 40 },
-			{ y: '2009', a: 75,  b: 65 },
-			{ y: '2010', a: 50,  b: 40 },
-			{ y: '2011', a: 75,  b: 65 },
-			{ y: '2012', a: 100, b: 90 }
-		],
-		xkey: 'y',
-		ykeys: ['a', 'b'],
-		labels: ['Series A', 'Series B'],
-		lineColors: ['#303641', '#576277']
-	});
-	
-	area_chart_demo.parent().attr('style', '');
-	
-	
-	
-	
-	// Rickshaw
-	var seriesData = [ [], [] ];
-	
-	var random = new Rickshaw.Fixtures.RandomData(50);
-	
-	for (var i = 0; i < 50; i++) 
-	{
-		random.addData(seriesData);
-	}
-	
-	var graph = new Rickshaw.Graph( {
-		element: document.getElementById("rickshaw-chart-demo"),
-		height: 193,
-		renderer: 'area',
-		stroke: false,
-		preserve: true,
-		series: [{
-				color: '#73c8ff',
-				data: seriesData[0],
-				name: 'Upload'
-			}, {
-				color: '#e0f2ff',
-				data: seriesData[1],
-				name: 'Download'
-			}
-		]
-	} );
-	
-	graph.render();
-	
-	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-		graph: graph,
-		xFormatter: function(x) {
-			return new Date(x * 1000).toString();
-		}
-	} );
-	
-	var legend = new Rickshaw.Graph.Legend( {
-		graph: graph,
-		element: document.getElementById('rickshaw-legend')
-	} );
-	
-	var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-		graph: graph,
-		legend: legend
-	} );
-	
-	setInterval( function() {
-		random.removeData(seriesData);
-		random.addData(seriesData);
-		graph.update();
-	
-	}, 500 );
-});
-
-
-function getRandomInt(min, max) 
-{
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-</script>
-
-
-<div class="row">
-	<div class="col-sm-3">
-	
-		<div class="tile-stats tile-red">
-			<div class="icon"><i class="entypo-users"></i></div>
-			<div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+							<a href="forms-main.html">Forms</a>
+					</li>
+				<li class="active">
 			
-			<h3>Registered users</h3>
-			<p>so far in our blog, and our website.</p>
-		</div>
-		
-	</div>
-	
-	<div class="col-sm-3">
-	
-		<div class="tile-stats tile-green">
-			<div class="icon"><i class="entypo-chart-bar"></i></div>
-			<div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
+							<strong>Editors</strong>
+					</li>
+					</ol>
 			
-			<h3>Daily Visitors</h3>
-			<p>this is the average value.</p>
-		</div>
-		
-	</div>
-	
-	<div class="col-sm-3">
-	
-		<div class="tile-stats tile-aqua">
-			<div class="icon"><i class="entypo-mail"></i></div>
-			<div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
-			
-			<h3>New Messages</h3>
-			<p>messages per day.</p>
-		</div>
-		
-	</div>
-	
-	<div class="col-sm-3">
-	
-		<div class="tile-stats tile-blue">
-			<div class="icon"><i class="entypo-rss"></i></div>
-			<div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
-			
-			<h3>Subscribers</h3>
-			<p>on our site right now.</p>
-		</div>
-		
-	</div>
-</div>
+<h2>Simple WYSIWYG Editor</h2>
 
 <br>
 
-<div class="row">
-	<div class="col-sm-8">
-	
-		<div class="panel panel-primary" id="charts_env">
-		
-			<div class="panel-heading">
-				<div class="panel-title">Site Stats</div>
-				
-				<div class="panel-options">
-					<ul class="nav nav-tabs">
-						<li class=""><a href="#area-chart" data-toggle="tab">Area Chart</a></li>
-						<li class="active"><a href="#line-chart" data-toggle="tab">Line Charts</a></li>
-						<li class=""><a href="#pie-chart" data-toggle="tab">Pie Chart</a></li>
-					</ul>
-				</div>
-			</div>
-	
-			<div class="panel-body">
-			
-				<div class="tab-content">
-				
-					<div class="tab-pane" id="area-chart">							
-						<div id="area-chart-demo" class="morrischart" style="height: 300px"></div>
-					</div>
-					
-					<div class="tab-pane active" id="line-chart">
-						<div id="line-chart-demo" class="morrischart" style="height: 300px"></div>
-					</div>
-					
-					<div class="tab-pane" id="pie-chart">
-						<div id="donut-chart-demo" class="morrischart" style="height: 300px;"></div>
-					</div>
-					
-				</div>
-				
-			</div>
+<form role="form" method="post">
 
-			<table class="table table-bordered table-responsive">
-
-				<thead>
-					<tr>
-						<th width="50%" class="col-padding-1">
-							<div class="pull-left">
-								<div class="h4 no-margin">Pageviews</div>
-								<small>54,127</small>
-							</div>
-							<span class="pull-right pageviews">4,3,5,4,5,6,5</span>
-							
-						</th>
-						<th width="50%" class="col-padding-1">
-							<div class="pull-left">
-								<div class="h4 no-margin">Unique Visitors</div>
-								<small>25,127</small>
-							</div>
-							<span class="pull-right uniquevisitors">2,3,5,4,3,4,5</span>
-						</th>
-					</tr>
-				</thead>
-				
-			</table>
-			
-		</div>	
-
+	<div class="form-group">
+		<textarea class="form-control wysihtml5" data-stylesheet-url="assets/css/wysihtml5-color.css" name="sample_wysiwyg" id="sample_wysiwyg"></textarea>
 	</div>
-
-	<div class="col-sm-4">
-
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">
-					<h4>
-						Real Time Stats
-						<br>
-						<small>current server uptime</small>
-					</h4>
-				</div>
-				
-				<div class="panel-options">
-					<a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
-					<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-					<a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
-					<a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
-				</div>
-			</div>
 		
-			<div class="panel-body no-padding">
-				<div id="rickshaw-chart-demo">
-					<div id="rickshaw-legend"></div>
-				</div>
-			</div>
-		</div>
+</form>
 
-	</div>
-</div>
+
 
 
 <br>
+<h2>CKEditor</h2>
+<br>
 
-<div class="row">
-	
-	<div class="col-sm-4">
-		
-		<div class="panel panel-primary">
-			<table class="table table-bordered table-responsive">
-				<thead>
-					<tr>
-						<th class="padding-bottom-none text-center">
-							<br>
-							<br>
-							<span class="monthly-sales"></span>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="panel-heading">
-							<h4>Monthly Sales</h4>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		
-	</div>
-	
-	<div class="col-sm-8">
-		
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">Latest Updated Profiles</div>
-				
-				<div class="panel-options">
-					<a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
-					<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-					<a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
-					<a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
-				</div>
-			</div>
-				
-			<table class="table table-bordered table-responsive">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Activity</th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Art Ramadani</td>
-						<td>CEO</td>
-						<td class="text-center"><span class="inlinebar">4,3,5,4,5,6</span></td>
-					</tr>
-					
-					<tr>
-						<td>2</td>
-						<td>Filan Fisteku</td>
-						<td>Member</td>
-						<td class="text-center"><span class="inlinebar-2">1,3,4,5,3,5</span></td>
-					</tr>
-					
-					<tr>
-						<td>3</td>
-						<td>Arlind Nushi</td>
-						<td>Co-founder</td>
-						<td class="text-center"><span class="inlinebar-3">5,3,2,5,4,5</span></td>
-					</tr>
+<form role="form" method="post">
+	<textarea class="form-control ckeditor">
+		&lt;h1&gt;&lt;img alt=&quot;Saturn V carrying Apollo 11&quot; class=&quot;right&quot; src=&quot;assets/images/sample.jpg&quot;/&gt; Apollo 11&lt;/h1&gt; &lt;p&gt;&lt;b&gt;Apollo 11&lt;/b&gt; was the spaceflight that landed the first humans, Americans &lt;a href=&quot;http://en.wikipedia.org/wiki/Neil_Armstrong&quot; title=&quot;Neil Armstrong&quot;&gt;Neil Armstrong&lt;/a&gt; and &lt;a href=&quot;http://en.wikipedia.org/wiki/Buzz_Aldrin&quot; title=&quot;Buzz Aldrin&quot;&gt;Buzz Aldrin&lt;/a&gt;, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.&lt;/p&gt; &lt;p&gt;Armstrong spent about &lt;s&gt;three and a half&lt;/s&gt; two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&amp;nbsp;kg) of lunar material for return to Earth. A third member of the mission, &lt;a href=&quot;http://en.wikipedia.org/wiki/Michael_Collins_(astronaut)&quot; title=&quot;Michael Collins (astronaut)&quot;&gt;Michael Collins&lt;/a&gt;, piloted the &lt;a href=&quot;http://en.wikipedia.org/wiki/Apollo_Command/Service_Module&quot; title=&quot;Apollo Command/Service Module&quot;&gt;command&lt;/a&gt; spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.&lt;/p&gt; &lt;h2&gt;Broadcasting and &lt;em&gt;quotes&lt;/em&gt; &lt;a id=&quot;quotes&quot; name=&quot;quotes&quot;&gt;&lt;/a&gt;&lt;/h2&gt; &lt;p&gt;Broadcast on live TV to a world-wide audience, Armstrong stepped onto the lunar surface and described the event as:&lt;/p&gt; &lt;blockquote&gt;&lt;p&gt;One small step for [a] man, one giant leap for mankind.&lt;/p&gt;&lt;/blockquote&gt; &lt;p&gt;Apollo 11 effectively ended the &lt;a href=&quot;http://en.wikipedia.org/wiki/Space_Race&quot; title=&quot;Space Race&quot;&gt;Space Race&lt;/a&gt; and fulfilled a national goal proposed in 1961 by the late U.S. President &lt;a href=&quot;http://en.wikipedia.org/wiki/John_F._Kennedy&quot; title=&quot;John F. Kennedy&quot;&gt;John F. Kennedy&lt;/a&gt; in a speech before the United States Congress:&lt;/p&gt; &lt;blockquote&gt;&lt;p&gt;[...] before this decade is out, of landing a man on the Moon and returning him safely to the Earth.&lt;/p&gt;&lt;/blockquote&gt; &lt;h2&gt;Technical details &lt;a id=&quot;tech-details&quot; name=&quot;tech-details&quot;&gt;&lt;/a&gt;&lt;/h2&gt; &lt;table align=&quot;right&quot; border=&quot;1&quot; bordercolor=&quot;#ccc&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;margin:10px 0 10px 15px;&quot;&gt; &lt;caption&gt;&lt;strong&gt;Mission crew&lt;/strong&gt;&lt;/caption&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&quot;col&quot;&gt;Position&lt;/th&gt; &lt;th scope=&quot;col&quot;&gt;Astronaut&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Commander&lt;/td&gt; &lt;td&gt;Neil A. Armstrong&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Command Module Pilot&lt;/td&gt; &lt;td&gt;Michael Collins&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Lunar Module Pilot&lt;/td&gt; &lt;td&gt;Edwin &amp;quot;Buzz&amp;quot; E. Aldrin, Jr.&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;p&gt;Launched by a &lt;strong&gt;Saturn V&lt;/strong&gt; rocket from &lt;a href=&quot;http://en.wikipedia.org/wiki/Kennedy_Space_Center&quot; title=&quot;Kennedy Space Center&quot;&gt;Kennedy Space Center&lt;/a&gt; in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of &lt;a href=&quot;http://en.wikipedia.org/wiki/NASA&quot; title=&quot;NASA&quot;&gt;NASA&lt;/a&gt;&amp;#39;s Apollo program. The Apollo spacecraft had three parts:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Command Module&lt;/strong&gt; with a cabin for the three astronauts which was the only part which landed back on Earth&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Service Module&lt;/strong&gt; which supported the Command Module with propulsion, electrical power, oxygen and water&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Lunar Module&lt;/strong&gt; for landing on the Moon.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;After being sent to the Moon by the Saturn V&amp;#39;s upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the &lt;a href=&quot;http://en.wikipedia.org/wiki/Mare_Tranquillitatis&quot; title=&quot;Mare Tranquillitatis&quot;&gt;Sea of Tranquility&lt;/a&gt;. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the &lt;a href=&quot;http://en.wikipedia.org/wiki/Pacific_Ocean&quot; title=&quot;Pacific Ocean&quot;&gt;Pacific Ocean&lt;/a&gt; on July 24.&lt;/p&gt; &lt;hr/&gt; &lt;p style=&quot;text-align: right;&quot;&gt;&lt;small&gt;Source: &lt;a href=&quot;http://en.wikipedia.org/wiki/Apollo_11&quot;&gt;Wikipedia.org&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+	</textarea>
+</form>
 
-				</tbody>
-			</table>
-		</div>
-		
-	</div>
-	
-</div>
+
+
+<br>
+<br>
+<h2>
+	<span class="label label-warning">New in 1.1.4</span> Markdown area
+</h2>
 
 <br>
 
+<textarea class="form-control" data-uk-markdownarea="">#Heading
 
-<script type="text/javascript">
-	// Code used to add Todo Tasks
-	jQuery(document).ready(function($)
-	{
-		var $todo_tasks = $("#todo_tasks");
-		
-		$todo_tasks.find('input[type="text"]').on('keydown', function(ev)
-		{
-			if(ev.keyCode == 13)
-			{
-				ev.preventDefault();
-				
-				if($.trim($(this).val()).length)
-				{
-					var $todo_entry = $('<li><div class="checkbox checkbox-replace color-white"><input type="checkbox" /><label>'+$(this).val()+'</label></div></li>');
-					$(this).val('');
-					
-					$todo_entry.appendTo($todo_tasks.find('.todo-list'));
-					$todo_entry.hide().slideDown('fast');
-					replaceCheckboxes();
-				}
-			}
-		});
-	});
-</script>
+Lorem ipsum dolor sit **amet**, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. [This is a link](#)
 
-<div class="row">
-	
-	<div class="col-sm-3">
-		<div class="tile-block" id="todo_tasks">
-			
-			<div class="tile-header">
-				<i class="entypo-list"></i>
-				
-				<a href="#">
-					Tasks
-					<span>To do list, tick one.</span>
-				</a>
-			</div>
-			
-			<div class="tile-content">
-				
-				<input type="text" class="form-control" placeholder="Add Task">
-				
-				
-				<ul class="todo-list">
-					<li>
-						<div class="checkbox checkbox-replace color-white">
-							<input type="checkbox">
-							<label>Website Design</label>
-						</div>
-					</li>
-					
-					<li>
-						<div class="checkbox checkbox-replace color-white">
-							<input type="checkbox" id="task-2" checked="">
-							<label>Slicing</label>
-						</div>
-					</li>
-					
-					<li>
-						<div class="checkbox checkbox-replace color-white">
-							<input type="checkbox" id="task-3">
-							<label>WordPress Integration</label>
-						</div>
-					</li>
-					
-					<li>
-						<div class="checkbox checkbox-replace color-white">
-							<input type="checkbox" id="task-4">
-							<label>SEO Optimize</label>
-						</div>
-					</li>
-					
-					<li>
-						<div class="checkbox checkbox-replace color-white">
-							<input type="checkbox" id="task-5" checked="">
-							<label>Minify &amp; Compress</label>
-						</div>
-					</li>
-				</ul>
-				
-			</div>
-			
-			<div class="tile-footer">
-				<a href="#">View all tasks</a>
-			</div>
-			
-		</div>
-	</div>
+* Item
+* Item
+* Item
 
-	<div class="col-sm-9">
-		
-		<script type="text/javascript">
-			jQuery(document).ready(function($)
-			{
-				var map = $("#map-2");
-				
-				map.vectorMap({
-					map: 'europe_merc_en',
-					zoomMin: '3',
-					backgroundColor: '#383f47',
-					focusOn: { x: 0.5, y: 0.8, scale: 3 }
-				});
-			});
-		</script>
-		
-		<div class="tile-group">
-			
-			<div class="tile-left">
-				<div class="tile-entry">
-					<h3>Map</h3>
-					<span>top visitors location</span>
-				</div>
-				
-				<div class="tile-entry">
-					<img src="static/picture/sample-al.png" alt="" class="pull-right op">
-					
-					<h4>Albania</h4>
-					<span>25%</span>
-				</div>
-				
-				<div class="tile-entry">
-					<img src="static/picture/sample-it.png" alt="" class="pull-right op">
-					
-					<h4>Italy</h4>
-					<span>18%</span>
-				</div>
-				
-				<div class="tile-entry">
-					<img src="static/picture/sample-au.png" alt="" class="pull-right op">
-					
-					<h4>Austria</h4>
-					<span>15%</span>
-				</div>
-			</div>
-			
-			<div class="tile-right">
-				
-				<div id="map-2" class="map"></div>
-				
-			</div>
-			
-		</div>
-		
-	</div>
+## Heading
 
-</div>
-<!-- Footer -->
+Ut enim ad *minim* veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+<a href="#">HTML syntax highlightning</a>
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+
+<br>
+<br>
+<textarea class="form-control" data-uk-markdownarea="{mode:'tab'}">#Heading
+
+Lorem ipsum dolor sit **amet**, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. [This is a link](#)
+
+* Item
+* Item
+* Item
+
+## Heading
+
+Ut enim ad *minim* veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+<a href="#">HTML syntax highlightning</a>
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea><!-- Footer -->
 <footer class="main">
 	
 		
@@ -1843,74 +1352,12 @@ function getRandomInt(min, max)
 </ul>	
 	</div>
 
-<!-- Sample Modal (Default skin) -->
-<div class="modal fade" id="sample-modal-dialog-1">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Widget Options - Default Modal</h4>
-			</div>
-			
-			<div class="modal-body">
-				<p>Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now.</p>
-			</div>
-			
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
-		</div>
-	</div>
-</div>
 
-<!-- Sample Modal (Skin inverted) -->
-<div class="modal invert fade" id="sample-modal-dialog-2">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Widget Options - Inverted Skin Modal</h4>
-			</div>
-			
-			<div class="modal-body">
-				<p>Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now.</p>
-			</div>
-			
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
-		</div>
-	</div>
-</div>
 
-<!-- Sample Modal (Skin gray) -->
-<div class="modal gray fade" id="sample-modal-dialog-3">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Widget Options - Gray Skin Modal</h4>
-			</div>
-			
-			<div class="modal-body">
-				<p>Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now.</p>
-			</div>
-			
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-	<link rel="stylesheet" href="static/css/jquery-jvectormap-1.2.2.css">
-	<link rel="stylesheet" href="static/css/rickshaw.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap-wysihtml5.css">
+	<link rel="stylesheet" href="static/css/codemirror.css">
+	<link rel="stylesheet" href="static/css/uikit.min.css">
+	<link rel="stylesheet" href="static/css/markdownarea.css">
 
 	<!-- Bottom Scripts -->
 	<script src="static/js/main-gsap.js"></script>
@@ -1919,14 +1366,19 @@ function getRandomInt(min, max)
 	<script src="static/js/joinable.js"></script>
 	<script src="static/js/resizeable.js"></script>
 	<script src="static/js/neon-api.js"></script>
-	<script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="static/js/jquery-jvectormap-europe-merc-en.js"></script>
-	<script src="static/js/jquery.sparkline.min.js"></script>
-	<script src="static/js/d3.v3.js"></script>
-	<script src="static/js/rickshaw.min.js"></script>
-	<script src="static/js/raphael-min.js"></script>
-	<script src="static/js/morris.min.js"></script>
-	<script src="static/js/toastr.js"></script>
+	<script src="static/js/wysihtml5-0.4.0pre.min.js"></script>
+	<script src="static/js/bootstrap-wysihtml5.js"></script>
+	<script src="static/js/ckeditor.js"></script>
+	<script src="static/js/jquery.js"></script>
+	<script src="static/js/uikit.min.js"></script>
+	<script src="static/js/codemirror.js"></script>
+	<script src="static/js/marked.js"></script>
+	<script src="static/js/markdownarea.min.js"></script>
+	<script src="static/js/markdown.js"></script>
+	<script src="static/js/overlay.js"></script>
+	<script src="static/js/xml.js"></script>
+	<script src="static/js/gfm.js"></script>
+	<script src="static/js/icheck.min.js"></script>
 	<script src="static/js/neon-chat.js"></script>
 	<script src="static/js/neon-custom.js"></script>
 	<script src="static/js/neon-demo.js"></script>
